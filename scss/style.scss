@@ -1,0 +1,56 @@
+@import "compass/css3";
+
+.input_container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  padding: 18px;
+  border: 2px solid #4A9AE3;
+  &.ng-valid {
+    border-color: #43CB12;
+  }
+  &.ng-pristine {
+    border-color: #4A9AE3;
+  }
+  input {
+    border: none;
+    width: 100%;
+    min-height: 28px;
+    outline: none;
+    padding-left: 18px;
+    font-size: 15px;
+    &.ng-valid.used:not(.ng-pristine) {
+      color: #43CB12;
+    }
+    &:not(.ng-valid) {
+      color: black;
+    }
+  }
+  .metro_label {
+    color: #A6A6A6; 
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 25px;
+    top: 20px;
+    transition: all 0.2s ease;
+  }
+
+  input:focus ~ .metro_label, input.used ~ .metro_label {
+    top: 3px;
+    transform: scale(.75);
+    left: 24px;
+    color: #A6A6A6;
+  }
+}
+
+@media (max-width: 768px) {
+  .input_container {
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    padding: 18px;
+    border-bottom: 1px solid #4A9AE3;
+  }
+}
