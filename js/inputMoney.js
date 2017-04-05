@@ -1,4 +1,4 @@
-angular.module("MainApp").directive("inputText", ["$compile", function ($compile) {
+angular.module("MainApp").directive("inputMoney", ["$compile", function ($compile) {
             return {
                 restrict: "E",
                 transclude: true,
@@ -7,7 +7,7 @@ angular.module("MainApp").directive("inputText", ["$compile", function ($compile
                   label: "@",
                   ngModel: "="
                 },
-                template: "<div class='input_container'>" +
+                template: "<div class='dollar-sign input_container'>"  +
 							              "<input type='text' ng-class='{ used: ngModel.length > 0 }' ng-model='ngModel' />" +
 	                          "<lable class='metro_label'>" +
 		                          " {{label}} " +
