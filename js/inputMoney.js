@@ -1,4 +1,4 @@
-angular.module("MainApp").directive("inputMoney", ["$compile", function ($compile) {
+angular.module("MainApp").directive("inputMoney", ["directivesService", function (directivesService) {
             return {
                 restrict: "E",
                 transclude: true,
@@ -9,25 +9,14 @@ angular.module("MainApp").directive("inputMoney", ["$compile", function ($compil
                 },
                 template: "<div class='dollar-sign input_container'>"  +
 							              "<input type='text' ng-class='{ used: ngModel.length > 0 }' ng-model='ngModel' />" +
-	                          "<lable class='metro_label'>" +
+	                          "<label class='container_label'>" +
 		                          " {{label}} " +
-	                          "</lable>" +
+	                          "</label>" +
                           "</div>",
                 link: function (scope, element, attrs) {            
-                  
-                  var attributes = $(element).prop("attributes");
-                  var $input = $(element).find("input");
 
-                  $.each(attributes, function () {
-                    var isProperAttribute = this.name !== "ng-model" && 
-                                            this.name !== "class" && 
-                                            this.name !== "lable";
-                      if (isProperAttribute) {
-                          $input.attr(this.name, this.value);
-                      }
-                  });
+                  directivesService.copyAttributes(element, scope);
 
-                  $compile($input)(scope);
                 }
             };
         }

@@ -37,7 +37,7 @@
 .input_container input:not(.ng-valid) {
   color: black;
 }
-.input_container .metro_label {
+.input_container .container_label {
   color: #A6A6A6;
   font-size: 18px;
   font-weight: normal;
@@ -47,7 +47,7 @@
   top: 20px;
   transition: all 0.2s ease;
 }
-.input_container input:focus ~ .metro_label, .input_container input.used ~ .metro_label {
+.input_container input:focus ~ .container_label, .input_container input.used ~ .container_label {
   top: 3px;
   transform: scale(0.75);
   left: 24px;
