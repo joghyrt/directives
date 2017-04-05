@@ -1,4 +1,7 @@
-angular.module("MainApp").directive("inputText", ["directivesService", function (directivesService) {
+angular.module("MainApp").directive("inputText", ["directivesService", "configService", function (directivesService, configService) {
+
+            var inputTemplatePath = configService.getInputTemplatePath();
+
             return {
                 restrict: "E",
                 transclude: true,
@@ -7,16 +10,11 @@ angular.module("MainApp").directive("inputText", ["directivesService", function 
                   label: "@",
                   ngModel: "="
                 },
-                template: "<div class='input_container'>" +
-							              "<input type='text' ng-class='{ used: ngModel.length > 0 }' ng-model='ngModel' />" +
-	                          "<label class='container_label'>" +
-		                          " {{label}} " +
-	                          "</label>" +
-                          "</div>",
+                templateUrl: inputTemplatePath,
                 link: function (scope, element, attrs) {            
                   
-                  directivesService.copyAttributes(element, scope);
-                  
+                   directivesService.copyAttributes(element, scope);
+
                 }
             };
         }

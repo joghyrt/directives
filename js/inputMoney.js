@@ -1,4 +1,7 @@
-angular.module("MainApp").directive("inputMoney", ["directivesService", function (directivesService) {
+angular.module("MainApp").directive("inputMoney", ["directivesService", "configService", function (directivesService, configService) {
+
+            var inputTemplatePath = configService.getInputTemplatePath();
+
             return {
                 restrict: "E",
                 transclude: true,
@@ -7,13 +10,10 @@ angular.module("MainApp").directive("inputMoney", ["directivesService", function
                   label: "@",
                   ngModel: "="
                 },
-                template: "<div class='dollar-sign input_container'>"  +
-							              "<input type='text' ng-class='{ used: ngModel.length > 0 }' ng-model='ngModel' />" +
-	                          "<label class='container_label'>" +
-		                          " {{label}} " +
-	                          "</label>" +
-                          "</div>",
+                templateUrl: inputTemplatePath,
                 link: function (scope, element, attrs) {            
+
+                  $(element).addClass("dollar-sign");
 
                   directivesService.copyAttributes(element, scope);
 
