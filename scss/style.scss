@@ -1,69 +1,128 @@
 @import "compass/css3";
 
+$color_input_label: #999999;
+$color_input_prestine: #0875db;
+$color_input_valid: #33cc00;
+$color_text: #000000;
+
 .input_container {
-  position: relative;
-  padding: 18px;
-  border: 2px solid #4A9AE3;
-  &.ng-valid {
-    border-color: #43CB12;
-    &.dollar-sign:before {
-      color: #43CB12;
+  input {
+    &:focus ~ .container_label, &.used ~ .container_label {
+      top: 2px;
+      font-size: 12px;
+      left: 5px;
+      color: $color_input_label;
+      margin-left: 8px;
     }
+    &:focus ~ .container_label.money-input, &.used ~ .container_label.money-input {
+      left: 11px;
+    }
+  }
+  position: relative;
+  padding: 3.5px;
+  border: 1px solid $color_input_prestine;
+  &.ng-valid {
+    border-color: $color_input_valid;
+    &.money-input:before {
+      color: $color_input_valid;
+    }
+  }
+  &.money-input {
+    padding-left: 35px;
+  }
+  input:focus ~ .input_container.used.money-input:before, &.used.money-input:before {
+    top: 19px;
+  }
+  &.money-input .container_label {
+    left: 36px;
   }
   &.ng-pristine {
-    border-color: #4A9AE3;
-    &.dollar-sign:before {
-      color: #4A9AE3;
+    border-color: $color_input_prestine;
+    &.money-input:before {
+      color: $color_input_prestine;
     }
-  }
-  &.dollar-sign:before {
-      content: '\0024';
-      position: absolute;
-      left: 10px;
-      top: 18px;
-      font-size: 20px;
-      color: #4A9AE3;
   }
   input {
     border: none;
     width: 100%;
-    min-height: 28px;
+    min-height: 38px;
     outline: none;
-    padding-left: 18px;
-    font-size: 15px;
+    padding-top: 16px;
+    padding-bottom: 0;
+    padding-left: 10px;
+    font-size: 18px;
+    &.money-input {
+      padding-left: 0px;
+    }
     &.ng-valid.used:not(.ng-pristine) {
-      color: #43CB12;
+      color: $color_input_valid;
     }
     &:not(.ng-valid) {
-      color: black;
+      color: $color_text;
     }
   }
   .container_label {
-    color: #A6A6A6; 
-    font-size: 18px;
+    color: $color_input_label;
+    font-size: 16px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
-    left: 25px;
-    top: 20px;
+    left: 16px;
+    top: 13px;
     transition: all 0.2s ease;
   }
-
-  input:focus ~ .container_label, input.used ~ .container_label {
-    top: 3px;
-    transform: scale(.75);
-    left: 24px;
-    color: #A6A6A6;
+  &.money-input:before {
+    content: '\0024';
+    position: absolute;
+    left: 19px;
+    top: 10px;
+    font-size: 18px;
+    color: $color_input_prestine;
+    transition: all 0.2s ease;
   }
 }
 
 @media only screen and (max-width: 766px) {
+  .form-group {
+    margin-bottom: 0px !important;
+  }
   .input_container {
+    input:focus ~ .input_container.used.money-input:before, &.used.money-input:before {
+      top: 29px;
+    }
+    input {
+      &:focus ~ .container_label, &.used ~ .container_label {
+        top: 12px;
+        font-size: 14px;
+        left: 8px;
+        color: $color_input_label;
+        margin-left: 8px;
+      }
+      &:focus ~ .container_label.money-input, &.used ~ .container_label.money-input {
+        top: 12px;
+      }
+    }
     margin-top: 0;
     margin-bottom: 0;
     position: relative;
-    padding: 18px;
+    padding: 11px;
     border: none;
-    border-bottom: 1px solid #4A9AE3;
+    border-bottom: 1px solid $color_input_prestine;
+    &.money-input:before {
+      top: 19px;
+    }
+    .container_label {
+      font-size: 18px;
+      left: 16px;
+      top: 20px;
+    }
+    input {
+      padding-left: 6px;
+      font-size: 20px;
+      padding-top: 17px;
+      &.money-input {
+        padding-left: 2px;
+      }
+    }
   }
 }

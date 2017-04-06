@@ -1,66 +1,137 @@
+.input_container input:focus ~ .container_label,
+.input_container input.used ~ .container_label {
+  top: 2px;
+  font-size: 12px;
+  left: 5px;
+  color: #999999;
+  margin-left: 8px;
+}
+
+.input_container input:focus ~ .container_label.money-input,
+.input_container input.used ~ .container_label.money-input {
+  left: 11px;
+}
+
 .input_container {
   position: relative;
-  padding: 18px;
-  border: 2px solid #4A9AE3;
+  padding: 3.5px;
+  border: 1px solid #0875db;
 }
 .input_container.ng-valid {
-  border-color: #43CB12;
+  border-color: #33cc00;
 }
-.input_container.ng-valid.dollar-sign:before {
-  color: #43CB12;
+.input_container.ng-valid.money-input:before {
+  color: #33cc00;
+}
+.input_container.money-input {
+  padding-left: 35px;
+}
+
+.input_container input:focus ~ .input_container.used.money-input:before,
+.input_container.used.money-input:before {
+    top: 19px;
+}
+
+.input_container.money-input .container_label {
+  left: 36px;
 }
 .input_container.ng-pristine {
-  border-color: #4A9AE3;
+  border-color: #0875db;
 }
-.input_container.ng-pristine.dollar-sign:before {
-  color: #4A9AE3;
-}
-.input_container.dollar-sign:before {
-  content: '\0024';
-  position: absolute;
-  left: 10px;
-  top: 18px;
-  font-size: 20px;
-  color: #4A9AE3;
+.input_container.ng-pristine.money-input:before {
+  color: #0875db;
 }
 .input_container input {
   border: none;
   width: 100%;
-  min-height: 28px;
+  min-height: 38px;
   outline: none;
-  padding-left: 18px;
-  font-size: 15px;
+  padding-top: 16px;
+  padding-bottom: 0;
+  padding-left: 10px;
+  font-size: 18px;
 }
+
+.input_container input.money-input {
+    padding-left: 0px;
+}
+
 .input_container input.ng-valid.used:not(.ng-pristine) {
-  color: #43CB12;
+  color: #33cc00;
 }
 .input_container input:not(.ng-valid) {
-  color: black;
+  color: #000000;
 }
 .input_container .container_label {
-  color: #A6A6A6;
-  font-size: 18px;
+  color: #999999;
+  font-size: 16px;
   font-weight: normal;
   position: absolute;
   pointer-events: none;
-  left: 25px;
-  top: 20px;
+  left: 16px;
+  top: 13px;
   transition: all 0.2s ease;
 }
-.input_container input:focus ~ .container_label, .input_container input.used ~ .container_label {
-  top: 3px;
-  transform: scale(0.75);
-  left: 24px;
-  color: #A6A6A6;
+.input_container.money-input:before {
+  content: '\0024';
+  position: absolute;
+  left: 19px;
+  top: 10px;
+  font-size: 18px;
+  color: #0875db;
+  transition: all 0.2s ease;
 }
 
 @media only screen and (max-width: 766px) {
+  .form-group {
+    margin-bottom: 0px !important;
+  }
+
+  .input_container input:focus ~ .input_container.used.money-input:before,
+  .input_container.used.money-input:before {
+    top: 29px;
+  }
+
+  .input_container input:focus ~ .container_label,
+  .input_container input.used ~ .container_label {
+    top: 12px;
+    font-size: 14px;
+    left: 8px;
+    color: #999999;
+    margin-left: 8px;
+  }
+
+  .input_container input:focus ~ .container_label.money-input,
+  .input_container input.used ~ .container_label.money-input {
+    top: 12px;
+  }
+
   .input_container {
     margin-top: 0;
     margin-bottom: 0;
     position: relative;
-    padding: 18px;
+    padding: 11px;
     border: none;
-    border-bottom: 1px solid #4A9AE3;
+    border-bottom: 1px solid #0875db;
+  }
+
+  .input_container.money-input:before {
+    top: 19px;
+  }
+
+  .input_container .container_label {
+    font-size: 18px;
+    left: 16px;
+    top: 20px;
+  }
+
+  .input_container input {
+    padding-left: 6px;
+    font-size: 20px;
+    padding-top: 17px
+  }
+
+  .input_container input.money-input {
+    padding-left: 2px;
   }
 }

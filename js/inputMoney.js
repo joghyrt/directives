@@ -12,8 +12,22 @@ angular.module("MainApp").directive("inputMoney", ["directivesService", "configS
                 },
                 templateUrl: inputTemplatePath,
                 link: function (scope, element, attrs) {            
+                  var $element = angular.element(element);
+                  var $input = $element.find("input");
 
-                  $(element).addClass("dollar-sign");
+                  $input.on("focusin", function () {
+                    $element.addClass("used");
+                  });
+
+                  $input.on("focusout", function () {
+                    if (!scope.ngModel.length > 0) {
+                      $element.removeClass("used");
+                    }
+                  });
+
+                  $element.addClass("money-input");
+                  $element.find("label").addClass("money-input");
+                  $input.addClass("money-input");
 
                   directivesService.copyAttributes(element, scope);
 
